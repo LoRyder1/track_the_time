@@ -1,0 +1,8 @@
+<h1>Customer Index</h1>
+<%= link_to 'Tasks', tasks_path %>
+
+<% @customers.each do |c| %>
+<ul>
+	<li><%= c.company %></li>
+</ul>
+<% end %>

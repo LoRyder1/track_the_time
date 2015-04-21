@@ -1,0 +1,19 @@
+<h1>New TimeEntry</h1>
+
+<%= form_for ([@task, @task.timeentries.build]) do |f| %>
+	
+	<p>
+		<% projects_array = @projects.map do |p|
+			[p.project_name, p.id]
+			end %>
+		<%= f.select :project_id, options_for_select(projects_array) %>
+	</p>
+
+	<p>
+		<%= f.text_area :note, placeholder: 'note' %>
+	</p>
+
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>
