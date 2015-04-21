@@ -21,6 +21,18 @@ Things you may want to cover:
 
 * Deployment instructions
 
+- notes
+
+user - username:string, display_name:string, email:string, password_hash:string
+
+customers - company, address1, address2, address3, city, state, zip, phone1, phone2, fax1, fax2, email, website
+
+projects - project_name, customer:references
+
+tasks - task_name
+
+timeentry - project:references, user:references, task:references, duration, start_time, note
+
 * ...
 
 

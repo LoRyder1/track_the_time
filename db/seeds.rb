@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+u = User.create!(username:"bob", display_name:"bob", email:"bob@mail.com", password_hash:"password")
+
+c = Customer.create!(company:"CoverMyMeds")
+
+p = Project.create!(project_name:"Lays of Rome", customer_id: c.id)
+
+t = Task.create!(task_name:"Temples and Gods")
+
+Timeentry.create!(project_id:p.id, user_id:u.id, task_id:t.id, duration:Time.now, start_time:Time.now, note:Faker::Lorem.paragraph)
