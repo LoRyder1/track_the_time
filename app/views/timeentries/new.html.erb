@@ -3,12 +3,12 @@
 <%= form_for @timeentry do |f| %>
 	
 
-	<p>
-		<%= select_tag(:project_id, options_for_select(@p)) %>
+	<p>Project:
+		<%= f.collection_select(:project_id, Project.all, :id, :project_name) %>
 	</p>
 
-	<p>
-		<%= select_tag(:task_id, options_for_select(@t)) %>
+	<p>Task:
+		<%= f.collection_select(:task_id, Task.all, :id, :task_name) %>
 	</p>
 
 	<p>

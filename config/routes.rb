@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   patch "/timeentries/:id/start_timer" => "timeentries#start_timer", as: "start_timer"
 
+  patch "/timeentries/:id/stop_timer" => "timeentries#stop_timer", as: "stop_timer"
+
   resources :timeentries
 
   resources :customers do 

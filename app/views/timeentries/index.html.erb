@@ -5,15 +5,15 @@
 <%= link_to 'New Entry', new_timeentry_path %>
 
 <table>
-	<% @tasks.each do |t| %>
+	<% @timee.each do |t| %>
 	<tr>
-		<td><%= t.task_name %> (<%= t.project.project_name %>)  </td>
+		<td><%= t.task.task_name %> (<%= t.project.project_name %>)  </td>
 	</tr>
 	<tr>
-		<td><%= t.timeentry.note %></td>
-		<td><%= t.timeentry.duration %></td>
-		<td><%= link_to 'Start', start_timer_path(t.timeentry.id) %></td>
-		<td><%= link_to 'Edit', edit_timeentry_path(t.timeentry.id) %></td>
+		<td><%= t.note %></td>
+		<td><%= t.duration %></td>
+		<td><%= link_to 'Start', start_timer_path(t), :method => :patch %></td>
+		<td><%= link_to 'Edit', edit_timeentry_path(t) %></td>
 	</tr>
 	<% end %>
 </table>
