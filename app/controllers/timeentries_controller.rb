@@ -32,7 +32,11 @@ class TimeentriesController < ApplicationController
 	def stop_timer
 		timee = Timeentry.find(params[:id])
 
-		timee.duration = Time.now - (timee.start_time)
+		if timee.duration == nil
+			timee.duration = Time.now - (timee.start_time)
+		else
+			timee.duration = timee.duration + (Time.now - (timee.start_time))
+		end
 
 		timee.save
 		redirect_to timeentries_path
