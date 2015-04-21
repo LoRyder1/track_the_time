@@ -4,7 +4,7 @@ class CreateTimeentries < ActiveRecord::Migration
       t.references :project, index: true, foreign_key: true
       t.references :user, index: true, foreign_key: true
       t.references :task, index: true, foreign_key: true
-      t.datetime :duration
+      t.float :duration
       t.datetime :start_time
       t.text :note
 

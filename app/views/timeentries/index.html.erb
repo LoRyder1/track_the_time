@@ -1,0 +1,19 @@
+<h1>Timeentry Index</h1>
+
+<h2><%=  (Time.now).strftime("%A, %b %d")%></h2>
+
+<%= link_to 'New Entry', new_timeentry_path %>
+
+<table>
+	<% @tasks.each do |t| %>
+	<tr>
+		<td><%= t.task_name %> (<%= t.project.project_name %>)  </td>
+	</tr>
+	<tr>
+		<td><%= t.timeentry.note %></td>
+		<td><%= t.timeentry.duration %></td>
+		<td><%= link_to 'Start', start_timer_path(t.timeentry.id) %></td>
+		<td><%= link_to 'Edit', edit_timeentry_path(t.timeentry.id) %></td>
+	</tr>
+	<% end %>
+</table>

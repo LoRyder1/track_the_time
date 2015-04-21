@@ -13,6 +13,6 @@ c = Customer.create!(company:"CoverMyMeds")
 
 p = Project.create!(project_name:"Lays of Rome", customer_id: c.id)
 
-t = Task.create!(task_name:"Temples and Gods")
+t = Task.create!(task_name:"Temples and Gods", project_id: p.id)
 
-Timeentry.create!(project_id:p.id, user_id:u.id, task_id:t.id, duration:Time.now, start_time:Time.now, note:Faker::Lorem.paragraph)
+Timeentry.create!(project_id:p.id, user_id:u.id, task_id:t.id, duration:120.543, start_time:Time.now, note:Faker::Lorem.sentence)

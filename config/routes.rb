@@ -13,10 +13,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
 
-  resources :tasks do 
-    resources :timeentries do
-    end
-  end
+  resources :tasks 
+
+  patch "/timeentries/:id/start_timer" => "timeentries#start_timer", as: "start_timer"
+
+  resources :timeentries
 
   resources :customers do 
     resources :projects do

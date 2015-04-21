@@ -1,3 +1,4 @@
 class Task < ActiveRecord::Base
-	has_many :timeentries
+	has_one :timeentry
+	belongs_to :project
 end

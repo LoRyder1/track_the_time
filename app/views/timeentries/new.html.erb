@@ -1,12 +1,14 @@
 <h1>New TimeEntry</h1>
 
-<%= form_for ([@task, @task.timeentries.build]) do |f| %>
+<%= form_for @timeentry do |f| %>
 	
+
 	<p>
-		<% projects_array = @projects.map do |p|
-			[p.project_name, p.id]
-			end %>
-		<%= f.select :project_id, options_for_select(projects_array) %>
+		<%= select_tag(:project_id, options_for_select(@p)) %>
+	</p>
+
+	<p>
+		<%= select_tag(:task_id, options_for_select(@t)) %>
 	</p>
 
 	<p>

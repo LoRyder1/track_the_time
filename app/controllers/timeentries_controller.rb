@@ -1,8 +1,22 @@
 class TimeentriesController < ApplicationController
+	def index
+		@tasks = Task.all	
+	end
+
 	def new
-		@projects = Project.all
-		@task = Task.find(params[:task_id])
+		projects = Project.all
+		y = []
+		projects.each do |x|
+			y << x.project_name
+			y << x.id
+		end
+		@p = y.each_slice(2).to_a
+
+		tasks = Task.all
+		z = []
+		
 		@timeentry = Timeentry.new
+
 	end
 
 	def create

@@ -42,15 +42,18 @@ ActiveRecord::Schema.define(version: 20150421000532) do
 
   create_table "tasks", force: :cascade do |t|
     t.string   "task_name"
+    t.integer  "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
 
   create_table "timeentries", force: :cascade do |t|
     t.integer  "project_id"
     t.integer  "user_id"
     t.integer  "task_id"
-    t.datetime "duration"
+    t.float    "duration"
     t.datetime "start_time"
     t.text     "note"
     t.datetime "created_at", null: false
