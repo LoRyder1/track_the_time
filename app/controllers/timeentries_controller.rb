@@ -14,7 +14,6 @@ class TimeentriesController < ApplicationController
 	end
 
 	def edit
-
 		@timee = Timeentry.find(params[:id])
 		if @timee.start_time == nil
 			render 'edit'
@@ -22,7 +21,6 @@ class TimeentriesController < ApplicationController
 			@t = Timeentry.new
 			@d = Time.now - (@timee.start_time)
 		end
-
 	end
 
 	def create

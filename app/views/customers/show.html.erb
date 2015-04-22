@@ -10,3 +10,28 @@
 	<li><%= x.project_name  %></li>
 </ul>
 <% end %>
+
+<hr>
+<h6>Timeentries Report</h6>
+
+<table>
+	<tr>
+		<th>Id</th>
+		<th>Task</th>
+		<th>Project</th>
+		<th>Duration</th>
+	</tr>
+<% @tes.each do |t| %>
+	<tr>
+		<td><%= t.id %></td>
+		<td><%= t.task.task_name %></td>
+		<td><%= t.project.project_name %></td>
+		<td><%= t.duration %></td>
+	</tr>
+<% end %>
+</table>
+
+<p>
+	Download: 
+	<%= link_to 'Excel', customer_path(format: 'xls') %>
+</p>

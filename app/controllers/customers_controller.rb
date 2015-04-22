@@ -6,6 +6,15 @@ class CustomersController < ApplicationController
 	def show
 		@c = Customer.find(params[:id])
 		@p = @c.projects
+		te = []
+		@p.each do |x|
+			te << Timeentry.where(project_id: x.id)
+		end
+		@tes = te[0]
+		respond_to do |format|
+			format.html
+			format.xls { send_data @tes.to_csv(col_sep: "\t") }
+		end
 	end
 
 	def new

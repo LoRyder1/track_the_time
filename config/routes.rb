@@ -16,7 +16,6 @@ Rails.application.routes.draw do
 
   resources :tasks 
 
-  post "/timeentries/download" => "timeentries#download", as: "download"
 
   patch "/timeentries/:id/start_timer" => "timeentries#start_timer", as: "start_timer"
 
