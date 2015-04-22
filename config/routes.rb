@@ -11,9 +11,12 @@ Rails.application.routes.draw do
   get "/login" => "sessions#new"
   delete "/logout" => "sessions#destroy", as: "logout"
 
+
   resources :users, only: [:new, :create]
 
   resources :tasks 
+
+  post "/timeentries/download" => "timeentries#download", as: "download"
 
   patch "/timeentries/:id/start_timer" => "timeentries#start_timer", as: "start_timer"
 

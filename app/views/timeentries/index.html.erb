@@ -21,3 +21,9 @@
 		<td>Total: <%= @t %></td>
 	</tr>
 </table>
+
+<p>
+	Download:
+	<%= link_to 'CSV', timeentries_path(format: 'csv') %> |
+	<%= link_to 'Excel', timeentries_path(format: 'xls') %>
+</p>

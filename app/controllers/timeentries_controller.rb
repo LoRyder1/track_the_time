@@ -1,8 +1,12 @@
 class TimeentriesController < ApplicationController
 	def index
-		@timee = Timeentry.all
-		t = Timeentry.where(user_id: current_user.id)	
-		@t = Timeentry.total(t)
+		@timee = Timeentry.where(user_id: current_user.id)	
+		@t = Timeentry.total(@timee)
+		respond_to do |format|
+			format.html
+			format.csv { send_data @timee.to_csv}
+			format.xls { send_data @timee.to_csv(col_sep: "\t") }
+		end
 	end
 
 	def new
@@ -58,6 +62,7 @@ class TimeentriesController < ApplicationController
 		timee.save
 		redirect_to timeentries_path
 	end
+
 
 	private
 	def timeentry_params
