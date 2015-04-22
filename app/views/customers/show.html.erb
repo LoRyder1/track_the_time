@@ -1,0 +1,12 @@
+<h1><%= @c.company %></h1>
+<h5>info:</h5>
+
+<hr>
+<h6>Projects</h6>
+
+<%= link_to 'New Project', new_customer_project_path(@c) %>
+<% @p.each do |x| %>
+<ul>
+	<li><%= x.project_name  %></li>
+</ul>
+<% end %>

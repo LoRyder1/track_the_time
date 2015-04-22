@@ -1,8 +1,10 @@
 <h1>Customer Index</h1>
-<%= link_to 'Tasks', tasks_path %>
+<%= link_to 'New Customer', new_customer_path %>
+<br>
+
 
 <% @customers.each do |c| %>
 <ul>
-	<li><%= c.company %></li>
+	<li><%= link_to c.company, customer_path(c) %> </li>
 </ul>
 <% end %>
