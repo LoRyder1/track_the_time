@@ -3,3 +3,16 @@
 <h3>Duration so far: <%= @d %></h3>
 
 <%= link_to 'Stop Timer', stop_timer_path, :method => :patch %>
+
+<%= form_for @timee do |f| %>
+
+	<p>
+		Manually enter time:
+	</p>
+	<p>
+		<%= f.text_field :start_time, placeholder: 'duration' %>
+	</p>
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>

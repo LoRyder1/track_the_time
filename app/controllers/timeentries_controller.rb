@@ -1,6 +1,8 @@
 class TimeentriesController < ApplicationController
 	def index
-		@timee = Timeentry.all	
+		@timee = Timeentry.all
+		t = Timeentry.where(user_id: current_user.id)	
+		@t = Timeentry.total(t)
 	end
 
 	def new
@@ -8,8 +10,15 @@ class TimeentriesController < ApplicationController
 	end
 
 	def edit
+
 		@timee = Timeentry.find(params[:id])
-		@d = Time.now - (@timee.start_time)
+		if @timee.start_time == nil
+			render 'edit'
+		else
+			@t = Timeentry.new
+			@d = Time.now - (@timee.start_time)
+		end
+
 	end
 
 	def create
@@ -18,6 +27,13 @@ class TimeentriesController < ApplicationController
 		@timeentry.user_id = current_user.id
 		
 		@timeentry.save
+		redirect_to timeentries_path
+	end
+
+	def update
+		@timee = Timeentry.find(params[:id])
+		@timee.duration = @timee.duration + (params[:timeentry][:start_time]).to_f
+		@timee.save
 		redirect_to timeentries_path
 	end
 
@@ -38,6 +54,7 @@ class TimeentriesController < ApplicationController
 			timee.duration = timee.duration + (Time.now - (timee.start_time))
 		end
 
+		timee.start_time = 0
 		timee.save
 		redirect_to timeentries_path
 	end
