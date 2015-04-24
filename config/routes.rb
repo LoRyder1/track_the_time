@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "/login" => "sessions#new"
   delete "/logout" => "sessions#destroy", as: "logout"
 
+  get "/user_doc" => "users#doc", as: "doc"
 
   resources :users, only: [:new, :create]
 
