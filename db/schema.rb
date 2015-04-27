@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150421000532) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "customers", force: :cascade do |t|
     t.string   "company"
     t.string   "address1"
@@ -38,7 +41,7 @@ ActiveRecord::Schema.define(version: 20150421000532) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "projects", ["customer_id"], name: "index_projects_on_customer_id"
+  add_index "projects", ["customer_id"], name: "index_projects_on_customer_id", using: :btree
 
   create_table "tasks", force: :cascade do |t|
     t.string   "task_name"
@@ -47,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150421000532) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
+  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id", using: :btree
 
   create_table "timeentries", force: :cascade do |t|
     t.integer  "project_id"
@@ -60,9 +63,9 @@ ActiveRecord::Schema.define(version: 20150421000532) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "timeentries", ["project_id"], name: "index_timeentries_on_project_id"
-  add_index "timeentries", ["task_id"], name: "index_timeentries_on_task_id"
-  add_index "timeentries", ["user_id"], name: "index_timeentries_on_user_id"
+  add_index "timeentries", ["project_id"], name: "index_timeentries_on_project_id", using: :btree
+  add_index "timeentries", ["task_id"], name: "index_timeentries_on_task_id", using: :btree
+  add_index "timeentries", ["user_id"], name: "index_timeentries_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
@@ -73,4 +76,9 @@ ActiveRecord::Schema.define(version: 20150421000532) do
     t.datetime "updated_at",    null: false
   end
 
+  add_foreign_key "projects", "customers"
+  add_foreign_key "tasks", "projects"
+  add_foreign_key "timeentries", "projects"
+  add_foreign_key "timeentries", "tasks"
+  add_foreign_key "timeentries", "users"
 end

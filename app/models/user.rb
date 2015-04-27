@@ -3,6 +3,12 @@ class User < ActiveRecord::Base
 
 	attr_reader :entered_password
 
+	validates :username, presence: true, length: { minimum: 3 }
+	validates :email, presence: true, uniqueness: true, format: /.+@.+\..+/
+	validates :entered_password, presence: true, length: { minimum: 6 }
+	validates :password, confirmation: true
+	validates :password_confirmation, presence: true
+	
 	def password
 		@password ||= BCrypt::Password.new(password_hash)
 	end

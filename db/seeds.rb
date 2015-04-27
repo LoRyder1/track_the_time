@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-u = User.create!(username:"bob", display_name:"bob", email:"bob@mail.com", password:"password")
+u = User.create!(username:"bob", display_name:"bob", email:"bob@mail.com", password:"password", password_confirmation:'password')
 
 c = Customer.create!(company:"CoverMyMeds")
 
