@@ -35,3 +35,8 @@ A process type is the prototype from which one or more dynos are instantiated. T
 WEBrick - is a Ruby library providing simple HTTP web server services
 
 Rack - a interface for web server to talk to your application
+
+A call stack - is a stack data structure that stores information about the active subroutines of a computer program. Details are normally hidden and automatic in high-level programming languages. A call stack keeps track of the point to which each active subroutine should return control when it finishes executing. An active subroutine is one that has been called but is yet to complete execution after which control should be handed back to the point of call.
+
+A stack or LIFO (last in, first out) is an abstract data type that serves as a collection of elements, with two operations: 
+push and pop. The first element popped off a stack is the the last element that was pushed. If the stack is full and does not contain enough space to accept an entity to be pushed, the stack is then considered to be in an overflow state. 
